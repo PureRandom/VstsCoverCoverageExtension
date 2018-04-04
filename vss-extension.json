@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "50a4f510-142a-11e8-85fe-290cdea90db9",
+    "version": "0.1.15",
+    "name": "Resharper DotCover analyse",
+    "description": "The task creates and runs the Resharper DotCover analyse command line",
+    "publisher": "cpateman",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}
