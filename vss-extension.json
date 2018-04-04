@@ -1,10 +1,11 @@
 {
     "manifestVersion": 1,
     "id": "50a4f510-142a-11e8-85fe-290cdea90db9",
-    "version": "0.1.15",
+    "version": "0.1.16",
     "name": "Resharper DotCover analyse",
     "description": "The task creates and runs the Resharper DotCover analyse command line",
     "publisher": "cpateman",
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
