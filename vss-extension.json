@@ -5,6 +5,7 @@
     "name": "Resharper DotCover analyse",
     "description": "The task creates and runs the Resharper DotCover analyse command line",
     "publisher": "cpateman",
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
