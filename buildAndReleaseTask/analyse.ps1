@@ -44,7 +44,33 @@ try {
     [string]$ProjectPattern = Get-VstsInput -Name ProjectPattern
 
     $DotCoverCommand = "analyse"
-    $DotCoverPath = "JetBrains.dotCover.CommandLineTools.2017.3.2\"
+    $DotCoverPath = "CommandLineTools-2018-1"
+    $outputLocation = (split-path -parent $MyInvocation.MyCommand.Definition) + "\" + $DotCoverPath + ".zip"
+
+    # Check if folder exists
+    if(Test-Path -Path $outputLocation.Replace(".zip","")){
+        Write-Host "Command Line Tools Exists"
+    } 
+    else {
+        Write-Host "Downloading Command Line Tools"
+
+        # Download Command Line Tools
+        $url = "https://download.jetbrains.com/resharper/JetBrains.dotCover.CommandLineTools.2018.1.zip"
+        Invoke-WebRequest -Uri $url -OutFile $outputLocation
+
+        # Unzip
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        function Unzip
+        {
+            param([string]$zipfile, [string]$outpath)
+    
+            [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+        }
+        Unzip $outputLocation $outputLocation.Replace(".zip","")
+
+        # Remove Zip
+        Remove-Item $outputLocation
+    }
     $DefaultOutputFilename = "CodeAnalyseResults"
 
     #### Create Command
