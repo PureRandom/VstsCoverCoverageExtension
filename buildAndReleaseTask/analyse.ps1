@@ -42,15 +42,20 @@ try {
     [string]$HideAutoProperties = Get-VstsInput -Name HideAutoProperties
     [string]$LogFile = Get-VstsInput -Name LogFile
     [string]$ProjectPattern = Get-VstsInput -Name ProjectPattern
+    [string]$CoreInstructionSet = Get-VstsInput -Name CoreInstructionSet
+    [string]$CustomDotCoverPath = Get-VstsInput -Name CustomDotCoverPath
 
     $DotCoverCommand = "analyse"
     $DotCoverPath = "CommandLineTools-2018-1"
     $outputLocation = (split-path -parent $MyInvocation.MyCommand.Definition) + "\" + $DotCoverPath + ".zip"
 
-    # Check if folder exists
-    if(Test-Path -Path $outputLocation.Replace(".zip","")){
+    # Check if folder exists 
+    if(-not ([string]::IsNullOrEmpty($CustomDotCoverPath))){
+        $DotCoverPath = $CustomDotCoverPath
+    }
+    elseif(Test-Path -Path $outputLocation.Replace(".zip","")){
         Write-Host "Command Line Tools Exists"
-    } 
+    }
     else {
         Write-Host "Downloading Command Line Tools"
 
@@ -134,6 +139,8 @@ try {
     $cmdline += NamePairCheck -name "ReturnTargetExitCode" -value $ReturnTargetExitCode -addQuotes true
     $cmdline += NamePairCheck -name "ProcessFilters" -value $ProcessFilters -addQuotes true
     $cmdline += NamePairCheck -name "HideAutoProperties" -value $HideAutoProperties -addQuotes true
+    $cmdline += NamePairCheck -name "CoreInstructionSet" -value $CoreInstructionSet -addQuotes false
+    
 
     write-host "**** - Setting options.. End - **** "
 

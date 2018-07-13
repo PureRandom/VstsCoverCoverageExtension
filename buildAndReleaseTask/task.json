@@ -13,8 +13,8 @@
     "demands": [],
     "version": {
         "Major": "0",
-        "Minor": "2",
-        "Patch": "0"
+        "Minor": "3",
+        "Patch": "3"
     },
     "minimumAgentVersion": "1.95.0",
     "instanceNameFormat": "Dot Cover Analyse $(message)",
@@ -67,6 +67,18 @@
             "required": false,
             "helpMarkDown": "Directory for auxiliary files. Set to the system temp by default",
             "groupName": "advanced"
+        },
+        {
+            "name": "CoreInstructionSet",
+            "type": "pickList",
+            "label": "Core Instruction Set",
+            "defaultValue": "x64",
+            "required": false,
+            "helpMarkDown": "The profiled process bitness",
+            "options": {
+                "x86": "x86",
+                "x64": "x64"
+            }
         },
         {
             "name": "ReportType",
@@ -205,6 +217,15 @@
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "Enables logging and specifies log file name",
+            "groupName": "advanced"
+        },
+        {
+            "name": "CustomDotCoverPath",
+            "type": "string",
+            "label": "Custom DotCover Path",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Path to a self host location of the DotCover Folder",
             "groupName": "advanced"
         }
     ],

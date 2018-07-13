@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "50a4f510-142a-11e8-85fe-290cdea90db9",
-    "version": "0.2.0",
+    "version": "0.3.3",
     "name": "Resharper DotCover analyse",
     "description": "The task creates and runs the Resharper DotCover analyse command line",
     "publisher": "cpateman",
